@@ -10,11 +10,11 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | Register new user<br/>(t@jwt.com, pw: test)         |register.tsx|[POST] /api/auth|'INSERT INTO user (name, email, password) VALUES (?, ?, ?)'<br>'SELECT id, name FROM store WHERE franchiseId=?'<br>'INSERT INTO userRole (userId, role, objectId) VALUES (?, ?, ?)''INSERT INTO auth (token, userId) VALUES (?, ?) ON DUPLICATE KEY UPDATE token=token'|
 | Login new user<br/>(t@jwt.com, pw: test)            |login.tsx|[PUT] /api/auth|'SELECT * FROM user WHERE email=?'<br>'SELECT * FROM userRole WHERE userId=?'<br>'INSERT INTO auth (token, userId) VALUES (?, ?) ON DUPLICATE KEY UPDATE token=token'<br>
 | Order pizza                                         |                    |                   |'SELECT * FROM menu'<br>'SELECT id, name FROM franchise WHERE name LIKE ? LIMIT 201 OFFSET 0'<br>'SELECT id, name FROM store WHERE franchiseId=?'|
-| Verify pizza                                        |                    |                   |              |
+| Verify pizza                                        |delivery.tsx|[POST] {{pizzaFactoryUrl}}/api/order/verify|none|
 | View profile page                                   |                    |                   |              |
 | View franchise<br/>(as diner)                       |                    |                   |'SELECT userId FROM auth WHERE token=?'<br>"SELECT objectId FROM userRole WHERE role='franchisee' AND userId=?"|
 | Logout                                              |                    |                   |'SELECT userId FROM auth WHERE token=?'<br>'DELETE FROM auth WHERE token=?'<br>|
-| View About page                                     |                    |                   |              |
+| View About page                                     |payment.tsx|/api/user/me|'SELECT userId FROM auth WHERE token=?'<br>'SELECT id, franchiseId, storeId, date FROM dinerOrder WHERE dinerId=? LIMIT 0,10'<br>'SELECT id, menuId, description, price FROM orderItem WHERE orderId=?'|
 | View History page                                   |                    |                   |              |
 | Login as franchisee<br/>(f@jwt.com, pw: franchisee) |                    |                   |              |
 | View franchise<br/>(as franchisee)                  |                    |                   |              |
