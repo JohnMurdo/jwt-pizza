@@ -12,7 +12,7 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | Order pizza                                         |                    |                   |'SELECT * FROM menu'<br>'SELECT id, name FROM franchise WHERE name LIKE ? LIMIT 201 OFFSET 0'<br>'SELECT id, name FROM store WHERE franchiseId=?'|
 | Verify pizza                                        |                    |                   |              |
 | View profile page                                   |                    |                   |              |
-| View franchise<br/>(as diner)                       |                    |                   |              |
+| View franchise<br/>(as diner)                       |                    |                   |'SELECT userId FROM auth WHERE token=?'<br>"SELECT objectId FROM userRole WHERE role='franchisee' AND userId=?"|
 | Logout                                              |                    |                   |'SELECT userId FROM auth WHERE token=?'<br>'DELETE FROM auth WHERE token=?'<br>|
 | View About page                                     |                    |                   |              |
 | View History page                                   |                    |                   |              |
