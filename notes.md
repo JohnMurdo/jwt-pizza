@@ -9,7 +9,7 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | View home page                                      |home.jsx|none|none|
 | Register new user<br/>(t@jwt.com, pw: test)         |register.tsx|[POST] /api/auth|'INSERT INTO user (name, email, password) VALUES (?, ?, ?)'<br>'SELECT id, name FROM store WHERE franchiseId=?'<br>'INSERT INTO userRole (userId, role, objectId) VALUES (?, ?, ?)''INSERT INTO auth (token, userId) VALUES (?, ?) ON DUPLICATE KEY UPDATE token=token'|
 | Login new user<br/>(t@jwt.com, pw: test)            |login.tsx|[PUT] /api/auth|'SELECT * FROM user WHERE email=?'<br>'SELECT * FROM userRole WHERE userId=?'<br>'INSERT INTO auth (token, userId) VALUES (?, ?) ON DUPLICATE KEY UPDATE token=token'<br>
-| Order pizza                                         |menu.tsx|NONE|'SELECT * FROM menu'<br>'SELECT id, name FROM franchise WHERE name LIKE ? LIMIT 201 OFFSET 0'<br>'SELECT id, name FROM store WHERE franchiseId=?'|
+| Order pizza                                         |menu.tsx|[POST] /api/order|'SELECT * FROM menu'<br>'SELECT id, name FROM franchise WHERE name LIKE ? LIMIT 201 OFFSET 0'<br>'SELECT id, name FROM store WHERE franchiseId=?'|
 | Verify pizza                                        |delivery.tsx|[POST] {{pizzaFactoryUrl}}/api/order/verify|none|
 | View profile page                                   |dinerDashboard.tsx|NONE|NONE|
 | View franchise<br/>(as diner)                       |franchiseDashboard.tsx|NONE|'SELECT userId FROM auth WHERE token=?'<br>"SELECT objectId FROM userRole WHERE role='franchisee' AND userId=?"|
