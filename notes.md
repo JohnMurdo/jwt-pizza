@@ -13,14 +13,14 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | Verify pizza                                        |delivery.tsx|[POST] {{pizzaFactoryUrl}}/api/order/verify|none|
 | View profile page                                   |dinerDashboard.tsx|NONE|NONE|
 | View franchise<br/>(as diner)                       |franchiseDashboard.tsx|NONE|'SELECT userId FROM auth WHERE token=?'<br>"SELECT objectId FROM userRole WHERE role='franchisee' AND userId=?"|
-| Logout                                              |logout.tsx|NONE|'SELECT userId FROM auth WHERE token=?'<br>'DELETE FROM auth WHERE token=?'<br>|
+| Logout                                              |logout.tsx|[DELETE] /api/auth|'SELECT userId FROM auth WHERE token=?'<br>'DELETE FROM auth WHERE token=?'<br>|
 | View About page                                     |payment.tsx|/api/user/me|'SELECT userId FROM auth WHERE token=?'<br>'SELECT id, franchiseId, storeId, date FROM dinerOrder WHERE dinerId=? LIMIT 0,10'<br>'SELECT id, menuId, description, price FROM orderItem WHERE orderId=?'|
 | View History page                                   |history.tsx|none|none|
-| Login as franchisee<br/>(f@jwt.com, pw: franchisee) |logout.tsx|NONE|NONE|
-| View franchise<br/>(as franchisee)                  |franchiseDashboard.tsx|NONE|NONE|
-| Create a store                                      |createStore.tsx|NONE|NONE|
-| Close a store                                       |closeStore.tsx|NONE|NONE|
-| Login as admin<br/>(a@jwt.com, pw: admin)           |login.tsx|NONE|NONE|
+| Login as franchisee<br/>(f@jwt.com, pw: franchisee) |logout.tsx|[PUT] /api/auth|NONE|
+| View franchise<br/>(as franchisee)                  |franchiseDashboard.tsx|/api/franchise/${user.id}|NONE|
+| Create a store                                      |createStore.tsx|[POST] /api/franchise/${franchise.id}/store|NONE|
+| Close a store                                       |closeStore.tsx|[DELETE] /api/franchise/${franchise.id}/store/${store.id}|NONE|
+| Login as admin<br/>(a@jwt.com, pw: admin)           |login.tsx|[PUT] /api/auth|NONE|
 | View Admin page                                     |adminDashboard.tsx|NONE|NONE|
-| Create a franchise for t@jwt.com                    |createFranchise.tsx|NONE|NONE|
-| Close the franchise for t@jwt.com                   |closeFranchise.tsx|NONE|NONE|
+| Create a franchise for t@jwt.com                    |createFranchise.tsx|[POST] /api/franchise|NONE|
+| Close the franchise for t@jwt.com                   |closeFranchise.tsx|[DELETE] /api/franchise/${franchise.id}|NONE|
