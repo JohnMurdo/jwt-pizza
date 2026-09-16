@@ -16,11 +16,11 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | Logout                                              |NONE|NONE|'SELECT userId FROM auth WHERE token=?'<br>'DELETE FROM auth WHERE token=?'<br>|
 | View About page                                     |payment.tsx|/api/user/me|'SELECT userId FROM auth WHERE token=?'<br>'SELECT id, franchiseId, storeId, date FROM dinerOrder WHERE dinerId=? LIMIT 0,10'<br>'SELECT id, menuId, description, price FROM orderItem WHERE orderId=?'|
 | View History page                                   |history.tsx|none|none|
-| Login as franchisee<br/>(f@jwt.com, pw: franchisee) |NONE|                   |              |
-| View franchise<br/>(as franchisee)                  |NONE|                   |              |
-| Create a store                                      |NONE|                   |              |
-| Close a store                                       |NONE|                   |              |
-| Login as admin<br/>(a@jwt.com, pw: admin)           |NONE|                   |              |
-| View Admin page                                     |NONE|                   |              |
-| Create a franchise for t@jwt.com                    |NONE|                   |              |
-| Close the franchise for t@jwt.com                   |NONE|                   |              |
+| Login as franchisee<br/>(f@jwt.com, pw: franchisee) |NONE|NONE|NONE|
+| View franchise<br/>(as franchisee)                  |NONE|NONE|NONE|
+| Create a store                                      |NONE|NONE|NONE|
+| Close a store                                       |NONE|NONE|NONE|
+| Login as admin<br/>(a@jwt.com, pw: admin)           |NONE|NONE|NONE|
+| View Admin page                                     |NONE|NONE|NONE|
+| Create a franchise for t@jwt.com                    |NONE|NONE|NONE|
+| Close the franchise for t@jwt.com                   |NONE|NONE|NONE|
