@@ -32,6 +32,25 @@ export default function DinerDashboard(props: Props) {
         HSOverlay.close(document.getElementById('hs-jwt-modal')!);
       }, 100);
     }
+
+  interface Props {
+    user: User | null;
+    setUser: (user: User) => void;
+  }
+  async function updateUser() {
+  let updatedUser: User = {
+    id: user.id,
+    name: nameRef.current?.value,
+    email: emailRef.current?.value,
+    password: passwordRef.current?.value || undefined,
+    roles: user.roles,
+  };
+
+  props.setUser(updatedUser);
+  setTimeout(() => {
+    HSOverlay.close(document.getElementById('hs-jwt-modal')!);
+  }, 100);
+  }
   function formatRole(role: { role: Role; objectId?: string }) {
     if (role.role === Role.Franchisee) {
       return `Franchisee on ${role.objectId}`;
